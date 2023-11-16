@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:weather/screens/loading_screen.dart';
 // import 'package:weather/screens/loading_screen.dart';
 
-void main(){
-  runApp(MyApp(),);
+void main() {
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
