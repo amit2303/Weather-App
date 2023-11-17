@@ -26,6 +26,10 @@ class _CityScreenState extends State<CityScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: ElevatedButton(
+                  style:ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                    ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -42,12 +46,16 @@ class _CityScreenState extends State<CityScreen> {
                     color: Colors.black,
                   ),
                   decoration: kTextFieldInputDecoration,
-                  onChanged: (value) {
+                  onChanged: (value) { 
                     cityName = value;
                   },
                 ),
               ),
               ElevatedButton(
+                style:ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                    ),
                 onPressed: () {
                   Navigator.pop(context, cityName);  
                 },

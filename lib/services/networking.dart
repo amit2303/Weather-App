@@ -44,12 +44,12 @@ class NetworkHelper {
 // //fetching data from JSON file
 // import 'dart:convert'; 
 //         var cityName = jsonDecode(response.body)['city']['name'];
-//         var country = jsonDecode(response.body)['city']['country'];
 //         var weather = jsonDecode(response.body)['list'][0]['weather'][0]['id'];
+//         var temp = jsonDecode(response.body)['list'][0]['main']['temp'];
 //         var weatherDesc =
 //             jsonDecode(response.body)['list'][39]['weather'][0]['description'];
-//         var temp = jsonDecode(response.body)['list'][0]['main']['temp'];
 
+//         var country = jsonDecode(response.body)['city']['country'];
 //         // var DecodeData =jsonDecode(response.body);
 //         // String cityName =jsonDecode(response.body)['city']['name'];
 //         // String country = DecodeData['city']['country'];

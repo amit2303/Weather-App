@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:weather/utilities/constants.dart';
 import 'package:weather/services/weather.dart';
+import 'package:weather/utilities/constants.dart';
+
 import 'city_screen.dart';
 
 class LocationScreen extends StatefulWidget {
-  LocationScreen({this.locationWeather});
+  LocationScreen(this.locationWeather);
 
   final locationWeather;
 
@@ -13,7 +14,7 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  // WeatherModel weather = WeatherModel();
+  WeatherModel weather = WeatherModel();
   late int temperature;
   late String weatherIcon;
   late String cityName;
@@ -28,19 +29,24 @@ class _LocationScreenState extends State<LocationScreen> {
 
   void updateUI(dynamic weatherData) {
     setState(() {
-      if (weatherData == null) {
+      if (weatherData == null 
+          // weatherData['city'] == null 
+          // weatherData['list'] == null ||
+          ) {
         temperature = 0;
         weatherIcon = 'Error';
         weatherMessage = 'Unable to get weather data';
         cityName = '';
         return;
       }
-      double temp = weatherData['main']['temp'];
+      cityName = weatherData['city']['name'];
+      
+      double temp = weatherData['list'][0]['main']['temp'];
       temperature = temp.toInt();
-      var condition = weatherData['weather'][0]['id'];
-      // weatherIcon = weather.getWeatherIcon(condition);
-      // weatherMessage = weather.getMessage(temperature);
-      cityName = weatherData['name'];
+      var condition = weatherData['list'][0]['weather'][0]['id'];
+      weatherIcon = weather.getWeatherIcon(condition);
+      weatherMessage = weather.getMessage(temperature);
+
     });
   }
 
@@ -51,7 +57,6 @@ class _LocationScreenState extends State<LocationScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/location_background.jpg'),
-            // image: AssetImage('images/location_background.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
@@ -68,15 +73,23 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: <Widget>[
                   ElevatedButton(
                     onPressed: () async {
-                      // var weatherData = await weather.getLocationWeather();
-                      // updateUI(weatherData);
+                      var weatherData = await weather.getLocationWeather();
+                      updateUI(weatherData);
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                    ),
                     child: Icon(
                       Icons.near_me,
-                      size: 50.0,
+                      size: 40.0,
                     ),
                   ),
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                    ),
                     onPressed: () async {
                       var typedName = await Navigator.push(
                         context,
@@ -86,15 +99,17 @@ class _LocationScreenState extends State<LocationScreen> {
                           },
                         ),
                       );
-                      if (typedName != null) {
-                        // var weatherData =
-                            // await weather.getCityWeather(typedName);
-                        // updateUI(weatherData);
+                      // print(typedName);
+
+                      if (typedName != null) {  
+                        var weatherData =
+                            await weather.getCityWeather(typedName);
+                            updateUI(weatherData);
                       }
                     },
                     child: Icon(
                       Icons.location_city,
-                      size: 50.0,
+                      size: 40.0,
                     ),
                   ),
                 ],
