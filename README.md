@@ -1,16 +1,9 @@
 # weather
 
-A new Flutter project.
+![App Screenshot](https://github.com/amit2303/Weather-App/blob/main/Screenshots/Screenshot%202023-11-17%20at%202.54.56%E2%80%AFPM.png )
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<div style="display:flex; justify-content:space-around;">
+  
+  <img src="https://github.com/amit2303/Weather-App/blob/main/Screenshots/Screenshot%202023-11-17%20at%202.56.09%E2%80%AFPM.png" alt="App Screenshot 2" >
+  <img src="https://github.com/amit2303/Weather-App/blob/main/Screenshots/Simulator%20Screenshot%20-%20iPhone%2015%20-%202023-11-17%20at%2014.54.35.png" alt="App Screenshot 1" width="300" height="600">
+</div>
